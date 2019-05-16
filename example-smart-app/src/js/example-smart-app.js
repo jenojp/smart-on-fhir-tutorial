@@ -13,6 +13,19 @@
     /**
      * ret is a promise object that can be .then() chained later on.
      * It is what is returned from window.ExtractData()
+     * Ultimately, it resolves to one patient object that is formatted as follows:
+     *     p: {
+     *       birthdate: "2015-02-20",
+     *       diastolicbp: "85 mmHg",
+     *       fname: "TIMMY",
+     *       gender: "male",
+     *       hdl: undefined,
+     *       height: "100 cm",
+     *       ldl: undefined,
+     *       lname: "SMART",
+     *       systolicbp: "125 mmHg
+     *     }
+     * The above is passed to window.drawVizualization(p)
      */
     var ret = $.Deferred();
 
@@ -142,6 +155,10 @@
     }
   }
 
+  /**
+   * Displays information at relevant html elements for one patient, p.
+   * Accepts the resolved value of window.extractData
+   */
   window.drawVisualization = function(p) {
     console.log('in window.drawVisualization(p)... p:');
     console.log(p);
