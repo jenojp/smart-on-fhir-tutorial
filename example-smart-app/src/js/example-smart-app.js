@@ -65,9 +65,17 @@
          * representing one patient and is rendered on the HTML page.
          */
         $.when(pt, obv).done(function(patient, obv) {
-          console.log('3.) Executing onReady.when.done()')
+
+          //obv, the response data for this patient, is accessible here.
+          console.log('3.) Executing onReady.when.done()');
+          console.log('Returned data from query, stored as variable \'obv\'');
           console.log(obv);
 
+          /**
+           * The below code just takes 'obv' and formats it into an object that will be
+           * used to edit the displayed data. This return var is 'p', which is returned wrapped
+           * in a promise. 
+           */
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
 
@@ -173,8 +181,8 @@
    * Accepts the resolved value of window.extractData
    */
   window.drawVisualization = function(p) {
-    console.log('Invoking window.drawVisualization(p).');
-    console.log('Populating html data with the following patient data');
+    console.log('4.) Invoking window.drawVisualization(p).');
+    console.log('Populating html data with the following formatted patient data');
     console.log(p);
     $('#holder').show();
     $('#loading').hide();
