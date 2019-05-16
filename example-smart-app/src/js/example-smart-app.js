@@ -42,12 +42,16 @@
       console.log('Below is a ClientPrototype object that encapsulates a way to interact with the FHIR server')
       console.log(smart);
       if (smart.hasOwnProperty('patient')) {
+
+        /**
+         * After auhtorization, we make the following API calls
+         * and then resolve the responses at the $.when(pt, obv).done() function
+         *
+         * Relevant API calls for the patient...
+         */
         var patient = smart.patient;
         var pt = patient.read();
-        /**
-         * After auhtorization, we make the following API call
-         * and then resolve it on the done() function
-         */
+        // Relevant API calls for the obsercation
         var obv = smart.patient.api.fetchAll({
                     type: 'Observation',
                     query: {
@@ -58,19 +62,23 @@
                       }
                     }
                   });
+
+        // If any of the two api calls is not a successful status, onError error handler invoked
         $.when(pt, obv).fail(onError);
 
         /**
-         * Call if api.fetchAll() has completed and returned a successful status.
-         * Turn this returned response, obv, into a promise that resolves to an object
+         * Call if the two api calls have completed and returned successful statuses.
+         * Turn this returned response, obv and patient, into a promise that resolves to an object
          * representing one patient and is rendered on the HTML page.
          */
         $.when(pt, obv).done(function(patient, obv) {
 
           //obv, the response data for this patient, is accessible here.
           console.log('3.) Executing onReady.when.done()');
-          console.log('Returned data from query, stored as variable \'obv\'');
-          console.log(obv);
+          console.log('Returned observation data from query, stored as variable \'obv\'');
+          console.log(obv);          
+          console.log('Returned patient data from query, stored as variable \'patient\'');
+          console.log(patient);
 
           /**
            * The below code just takes 'obv' and formats it into an object that will be
