@@ -88,6 +88,8 @@
       extractData().then(
         //Display Patient Demographics and Observations if extractData was success
         function(p) {
+          console.log("then(p())");
+          console.log(p);
           drawVisualization(p);
         },
 

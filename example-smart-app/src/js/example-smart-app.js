@@ -1,7 +1,8 @@
 /**
  * IIFE that populates index.html upon a sucessful authorization
- * process that occurs in launch.html, where we give ourselves
- * access to Patient and Observation
+ * process that occurs in <script/> segment inlaunch.html, where we
+ * give ourselves access to Patient and Observation with our CernerCare
+ * credentials.
  */
 (function(window){
   window.extractData = function() {
