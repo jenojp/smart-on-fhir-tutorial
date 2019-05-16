@@ -1,19 +1,29 @@
 /**
- * IIFE that populates index.html upon a sucessful authorization
- * process that occurs in <script/> segment inlaunch.html, where we
+ * IIFE that declares/assigns methods to window scope upon a sucessful authorization
+ * process that occurs in the <script/> segment of inlaunch.html, where we
  * give ourselves access to Patient and Observation with our CernerCare
- * credentials.
+ * credentials. 
+ *
+ * 1. Assigns variable window.extractData(), which is called in index.html
+ *    and returns a promise whose resolved value is then passed to 
+ *    window.drawVisualization
  */
 (function(window){
   window.extractData = function() {
+    /**
+     * ret is a promise object that can be .then() chained later on.
+     * It is what is returned from window.ExtractData()
+     */
     var ret = $.Deferred();
 
+    // Invoked if authorization or any sort of api call fails
     function onError() {
       console.log('Loading error', arguments);
       ret.reject();
     }
 
     function onReady(smart)  {
+      console.log('Calling onReady()');
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
         var pt = patient.read();
@@ -73,11 +83,22 @@
         onError();
       }
     }
-
+   /**
+    * Module FHIR exported from ../lib/js/fhir-client-v0.1.12.js
+    * on line 17612, following is exported to global scope window
+    * window.FHIR = {
+    *   client: client,
+    *    oauth2: oauth2
+    * };
+    * oath2.ready() appears to be asynchornous function that
+    * accepts a callback function, onReady, to execute upon successful
+    * authorization, and onError, as an error catching function. 
+    */
+    console.log('calling Fhir.oath2.ready(onReady, onError)');
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
 
-  };
+  }; //end window.extractData()
 
   function defaultPatient(){
     return {
@@ -122,6 +143,8 @@
   }
 
   window.drawVisualization = function(p) {
+    console.log('in window.drawVisualization(p)... p:');
+    console.log(p);
     $('#holder').show();
     $('#loading').hide();
     $('#fname').html(p.fname);
@@ -134,5 +157,7 @@
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
   };
-
+/**
+ * Pass the singular 'window' object of the HTML document.
+ */
 })(window);
