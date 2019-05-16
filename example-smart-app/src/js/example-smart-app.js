@@ -21,11 +21,11 @@
                       }
                     }
                   });
-        console.log(Object.getOwnPropertyNames(obv))
-        console.log(Object.getOwnPropertyNames(obv.done))
-        console.log(Object.getOwnPropertyNames(obv.promise))
         $.when(pt, obv).fail(onError);
         $.when(pt, obv).done(function(patient, obv) {
+          console.log(Object.getOwnPropertyNames(obv))
+          console.log(Object.getOwnPropertyNames(obv.done))
+          console.log(Object.getOwnPropertyNames(obv.promise))
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
 
