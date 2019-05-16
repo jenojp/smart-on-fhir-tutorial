@@ -26,6 +26,8 @@
      *       systolicbp: "125 mmHg
      *     }
      * The above is passed to window.drawVizualization(p)
+     * '$' is a shorthand name for "jQuery".
+     * 
      */
     var ret = $.Deferred();
 
@@ -36,10 +38,15 @@
     }
 
     function onReady(smart)  {
-      console.log('Calling onReady()');
+      console.log('2.) executing onReady() as callback of Fhir.oath2.readh(cb(), e())');
+      console.log(smart);
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
         var pt = patient.read();
+        /**
+         * After auhtorization, we make the following API call
+         * and then resolve it on the done() function
+         */
         var obv = smart.patient.api.fetchAll({
                     type: 'Observation',
                     query: {
@@ -51,8 +58,14 @@
                     }
                   });
         $.when(pt, obv).fail(onError);
+
+        /**
+         * Call if api.fetchAll() has completed and returned a successful status.
+         * Turn this returned response, obv, into a promise that resolves to an object
+         * representing one patient and is rendered on the HTML page.
+         */
         $.when(pt, obv).done(function(patient, obv) {
-          console.log('onReady.when.done()')
+          console.log('3.) Executing onReady.when.done()')
           console.log(obv);
 
           var byCodes = smart.byCodes(obv, 'code');
@@ -107,7 +120,7 @@
     * accepts a callback function, onReady, to execute upon successful
     * authorization, and onError, as an error catching function. 
     */
-    console.log('calling Fhir.oath2.ready(onReady, onError)');
+    console.log('1.) Executing Fhir.oath2.ready(onReady, onError)');
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
 
@@ -160,7 +173,8 @@
    * Accepts the resolved value of window.extractData
    */
   window.drawVisualization = function(p) {
-    console.log('in window.drawVisualization(p)... p:');
+    console.log('Invoking window.drawVisualization(p).');
+    console.log('Populating html data with the following patient data');
     console.log(p);
     $('#holder').show();
     $('#loading').hide();
