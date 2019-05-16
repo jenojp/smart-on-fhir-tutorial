@@ -39,6 +39,7 @@
 
     function onReady(smart)  {
       console.log('2.) executing onReady() as callback of Fhir.oath2.readh(cb(), e())');
+      console.log('Below is a ClientPrototype object that encapsulates a way to interact with the FHIR server')
       console.log(smart);
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
