@@ -21,7 +21,7 @@
                       }
                     }
                   });
-        console.log(obv.getOwnPropertyNames())
+        console.log(Object.getOwnPropertyNames(obv)))
         $.when(pt, obv).fail(onError);
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
