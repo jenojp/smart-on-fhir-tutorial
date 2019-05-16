@@ -1,3 +1,8 @@
+/**
+ * IIFE that populates index.html upon a sucessful authorization
+ * process that occurs in launch.html, where we give ourselves
+ * access to Patient and Observation
+ */
 (function(window){
   window.extractData = function() {
     var ret = $.Deferred();
@@ -21,11 +26,11 @@
                       }
                     }
                   });
-          console.log(Object.getOwnPropertyNames(obv))
-          console.log(Object.getOwnPropertyNames(obv.done))
-          console.log(Object.getOwnPropertyNames(obv.promise))
         $.when(pt, obv).fail(onError);
         $.when(pt, obv).done(function(patient, obv) {
+          console.log('onReady.when.done()')
+          console.log(obv);
+
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
 
