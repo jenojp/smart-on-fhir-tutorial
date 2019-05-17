@@ -86,8 +86,9 @@
     <script>
       extractData().then(
         //Display Patient Demographics and Observations if extractData was success
-        function(p) {
+        function(p, obv_string) {
           drawVisualization(p);
+          drawJson(obv_string)
         },
 
         //Display 'Failed to call FHIR Service' if extractData failed
@@ -97,6 +98,5 @@
         }
       );
     </script>
-    document.body.innerHTML = obv_string
   </body>
 </html>

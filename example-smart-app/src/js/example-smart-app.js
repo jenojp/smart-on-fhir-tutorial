@@ -77,7 +77,8 @@
           console.log('3.) Executing onReady.when.done()');
           console.log('Returned observation data from query, stored as variable \'obv\'');
           console.log(obv);
-          var obv_string = JSON.stringify(obv)        
+          var obv_string = JSON.stringify(obv);  
+          console.log(obv_string);
           console.log('Returned patient data from query, stored as variable \'patient\'');
           console.log(patient);
 
@@ -205,6 +206,12 @@
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
+  };
+
+  window.drawJson = function(obv_string) {
+    $('#holder').show();
+    $('#loading').hide();
+    $('#obv_string').html(obv_string);
   };
 /**
  * Pass the singular 'window' object of the HTML document.
