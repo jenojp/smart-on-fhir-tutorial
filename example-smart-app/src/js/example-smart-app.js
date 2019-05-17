@@ -76,7 +76,8 @@
           //obv, the response data for this patient, is accessible here.
           console.log('3.) Executing onReady.when.done()');
           console.log('Returned observation data from query, stored as variable \'obv\'');
-          console.log(obv);          
+          console.log(obv);
+          var obv_string = JSON.stringify(obv)        
           console.log('Returned patient data from query, stored as variable \'patient\'');
           console.log(patient);
 
