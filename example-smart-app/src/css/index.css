@@ -35,3 +35,7 @@ pre {
 a {
     color: #e81c4f;
 }
+
+table {
+    padding-left: 5em;
+}
