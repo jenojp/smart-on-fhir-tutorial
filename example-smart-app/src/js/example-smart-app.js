@@ -81,9 +81,9 @@
           console.log('Returned patient data from query, stored as variable \'patient\'');
           console.log(patient);
 
-          $('#observation-json').text(JSON.parse(obv));
+          $('#observation-json').text(obv);
           $('#observation-json').text('observation-json span');
-          $('#patient-json').text(JSON.parse(patient));
+          $('#patient-json').text(patient);
           $('#patient-json').text('patient-json span');
 
           /**
