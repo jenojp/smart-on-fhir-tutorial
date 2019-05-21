@@ -8,6 +8,17 @@ body {
     padding: 4em 1em;
     color: #555;
 }
+header {
+  background-color: #263d36;
+  background-image: url("../images/watson.png");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  line-height: 1.2;
+  max-width: none;
+  padding: 10vw 2em;
+  text-align: center;
+}
 
 h2 {
     margin-top: 1em;
