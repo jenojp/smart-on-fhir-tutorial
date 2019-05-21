@@ -25,12 +25,14 @@
     </header>
     <main>
       <div id='holder' >
-        Displays the results of an API call to the FHIR resource
-        server for a Patient and their Observations, both formatted
-        information and raw JSON. The raw JSON can be copied and pasted
-        into a JSON validator such as 
-        <a href="https://jsonlint.com/"> JSONLint </a> to format
-        the response into a more readable structure.
+        <span>
+          Displays the results of an API call to the FHIR resource
+          server for a Patient and their Observations, both formatted
+          information and raw JSON. The raw JSON can be copied and pasted
+          into a JSON validator such as 
+          <a href="https://jsonlint.com/"> JSONLint </a> to format
+          the response into a more readable structure.          
+        </span>
 
         <h2>Patient Resource</h2>
         <table>
@@ -51,6 +53,11 @@
             <td id='birthdate'></td>
           </tr>
         </table>
+        <h3>FHIR API response for Patient Resource</h3>
+        <span>
+          The below will be valid JSON and should contain one 
+          deeply nested JavaScript object.
+        </span>
         <span id='patient-json'>
         </span>
         <h2>Observation Resource</h2>
@@ -77,8 +84,12 @@
             <td id='hdl'></td>
           </tr>
         </table>
+        <h3>FHIR API response for Observation Resource</h3>
+        <span>
+          The below will be valid JSON and should contain an array
+          of JavaScript objects, each representing an observation.
+        </span>
         <span id='observation-json'>
-
         </span>
       </div>
       <!-- Required JS files to enable this page to embed within an MPage -->
