@@ -87,10 +87,10 @@
           console.log(printPatient);
           console.log('printObv');
           console.log(printObv);
-          $('#observation-json').text(JSON.stringify(obv));
-          $('#observation-json').text('observation-json span');
-          $('#patient-json').text(JSON.stringify(patient));
-          $('#patient-json').text('patient-json span');
+          $('#observation-json').text(printObv);
+          // $('#observation-json').text('observation-json span');
+          $('#patient-json').text(printPatient);
+          // $('#patient-json').text('patient-json span');
 
           /**
            * The below code just takes 'obv' and formats it into an object that will be
