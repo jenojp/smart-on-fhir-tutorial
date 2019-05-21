@@ -83,10 +83,6 @@
 
           let printPatient = JSON.stringify(patient);
           let printObv = JSON.stringify(obv);
-          console.log('printPatient');
-          console.log(printPatient);
-          console.log('printObv');
-          console.log(printObv);
           $('#observation-json').text(printObv);
           // $('#observation-json').text('observation-json span');
           $('#patient-json').text(printPatient);
