@@ -20,6 +20,18 @@ header {
   text-align: center;
 }
 
+header,
+main {
+  margin: 0 auto;
+  max-width: 50em;
+}
+
+header h1 {
+  color: white;
+  font-size: 2.5em;
+  font-weight: 300;
+}
+
 h2 {
     margin-top: 1em;
     padding-top: 1em;
@@ -57,7 +69,7 @@ table {
 #observation-json {
     display: block;
     height: 40vh;
-    width: 80vw;
+    width: 50em;
     overflow: auto;
     background: #f5f7f9;
     color: #a7adba;
