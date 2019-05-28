@@ -77,10 +77,16 @@
           console.log('3.) Executing onReady.when.done()');
           console.log('Returned observation data from query, stored as variable \'obv\'');
           console.log(obv);
-          var obv_string = JSON.stringify(obv);  
-          console.log(obv_string);
+
           console.log('Returned patient data from query, stored as variable \'patient\'');
           console.log(patient);
+
+          let printPatient = JSON.stringify(patient);
+          let printObv = JSON.stringify(obv);
+          $('#observation-json').text(printObv);
+          // $('#observation-json').text('observation-json span');
+          $('#patient-json').text(printPatient);
+          // $('#patient-json').text('patient-json span');
 
           /**
            * The below code just takes 'obv' and formats it into an object that will be
@@ -206,12 +212,6 @@
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
-  };
-
-  window.drawJson = function(obv_string) {
-    $('#holder').show();
-    $('#loading').hide();
-    $('#obv_string').html(obv_string);
   };
 /**
  * Pass the singular 'window' object of the HTML document.
